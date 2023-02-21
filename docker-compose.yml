@@ -1,24 +1,24 @@
 version: '3'
 
 services:
-  db:     
-      image: mysql:5.7       
-      command: --default-authentication-plugin=mysql_native_password          
-      environment:            
-          MYSQL_ROOT_PASSWORD: supersecret         
-          MYSQL_DATABASE: testapp           
-          MYSQL_USER: root           
-          MYSQL_PASSWORD: supersecret      
-      ports:            
-          - 3306:3306
+ teachteam-mysql-db:
+        image: mysql:8.0
+        container_name: teachteam-mysql-db
+        ports:
+            - "3306:3306"
+        environment:
+            MYSQL_ROOT_PASSWORD: 123456
+            MYSQL_USER: techteam
+            MYSQL_PASSWORD: 123456Aa@
+            MYSQL_ROOT_HOST: '%'
   
-  springboot:
-    depends_on:
-      - db
-    build:
-      context: Springboot # Use an image built from the specified dockerfile in the `` directory.
-      dockerfile: Dockerfile
-    ports:
+  #springboot:
+    #depends_on:
+      #- db
+    #build:
+      #context: Springboot # Use an image built from the specified dockerfile in the `` directory.
+      #dockerfile: Dockerfile
+    #ports:
         - 8081:8081            #$SPRING_LOCAL_PORT:$SPRING_DOCKER_PORT
     #environment:
       #SPRING_APPLICATION_JSON: '{
@@ -40,5 +40,5 @@ services:
 
 
 
-volumes:
-  mysql-data:
+#volumes:
+  #mysql-data:
