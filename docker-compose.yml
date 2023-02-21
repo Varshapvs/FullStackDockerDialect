@@ -12,13 +12,13 @@ services:
             MYSQL_PASSWORD: 123456Aa@
             MYSQL_ROOT_HOST: '%'
   
-  #springboot:
-    #depends_on:
-      #- db
-    #build:
-      #context: Springboot # Use an image built from the specified dockerfile in the `` directory.
-      #dockerfile: Dockerfile
-    #ports:
+  springboot:
+    depends_on:
+      - teachteam-mysql-db
+    build:
+      context: Springboot # Use an image built from the specified dockerfile in the `` directory.
+      dockerfile: Dockerfile
+    ports:
         - 8081:8081            #$SPRING_LOCAL_PORT:$SPRING_DOCKER_PORT
     #environment:
       #SPRING_APPLICATION_JSON: '{
