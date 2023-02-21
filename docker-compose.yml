@@ -28,22 +28,15 @@ services:
         #"spring.jpa.properties.hibernate.dialect" : "org.hibernate.dialect.MySQL5InnoDBDialect",
         #"spring.jpa.hibernate.ddl-auto" : "update"
       #}'
-    volumes:
-      - .m2:/root/.m2
-    stdin_open: true
-    tty: true
+    #volumes:
+      #- .m2:/root/.m2
+    #stdin_open: true
+    #tty: true
 
-  angular:
-    build:
-      context: AngularDocker # Use an image built from the specified dockerfile in the `angular-11-social-login` directory.
-      dockerfile: Dockerfile
-      args:
-        API_BASE_URL: http://127.0.0.1:8081/
-    ports:
-      - "4200:80" # Map the exposed port 80 on the container to port 4200 on the host machine
-    restart: always
-    depends_on:
-      - springboot
+  #angular:
+   #restart: always
+    #depends_on:
+      #- springboot
 
 
 
